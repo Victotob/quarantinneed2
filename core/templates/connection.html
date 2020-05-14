@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{page.p_titre}}{% endblock %}
+{% block description %}{{page.p_description}}{% endblock %}
+{% block content %}
+
+<h1>{{page.p_titre}}</h1>
+{{page.p_contenu|safe}}
+
+{% if form %}
+    <form action="{{page.p_adresse}}" method="post">{% csrf_token %}
+    {{form.as_p}}
+    <p><input type="submit" value="OK"></p>
+    </form>
+{% endif %}
+
+{% endblock %}

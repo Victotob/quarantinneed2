@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+"""{% block title %}{% endblock %}"""
+{% block description %}Page d'index du projet{% endblock %}
+{% block content %}
+<h1><p class="text-center">Bienvenue chez Quarantin'Need !</p></h1>
+<h2><p class="text-center">La plateforme qui vous fournie en besoins essentiels pendant ce confinement !</p></h2>
+<link href='{% static "/mon_app/style.css" %}' rel='stylesheet' type='text/css'>
+{% endblock %}

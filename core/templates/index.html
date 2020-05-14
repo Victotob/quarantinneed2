@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+"""{% block title %}{% endblock %}"""
+{% block description %}Page d'index du projet{% endblock %}
+{% block content %}
+<h1><p class="text-center">Bienvenue chez Quarantin'Need !</p></h1>
+<h2><p class="text-center">La plateforme qui vous fournie en besoins essentiels pendant ce confinement !</p></h2>
+<h3><p class="text-center">Rejoignez nous sur nos réseaux sociaux !</p></h3>
+
+
+
+<div class="card-group">
+  <div class="card">
+    <img class="card-img-top" src="{% static 'mon_app/instagram.png' %}" width=auto height=auto alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title text-center">Instagram</h5>
+      <p class="card-text text-center">Abonnez-vous à notre page Instagram !</p>
+    </div>
+    <div class="card-footer">
+      <a href="https://www.instagram.com/quarantinneed/">Instagram</a>     </div>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="{% static 'mon_app/linkedin.png' %}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title text-center">Abonnez-vous à notre page LinkedIn</h5>
+      <p class="card-text text-center">Vous recevrez toutes les actualités concernant le confinement !</p>
+    </div>
+    <div class="card-footer">
+	<a href="https://www.linkedin.com/company/quarant-in-need/">Linkedin</a>     </div>
+  </div>
+  
+
+{% endblock %}
+
+<!-- <img alt="image" src="image.jpg" width="200" height="300"> <--

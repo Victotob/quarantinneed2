@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang ="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{%block title %}My amazing site{% endblock %}</title>
+        <meta name = "description" content="{% block description %}My amazing site{% endblock %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+<body class="d-flex flex-column h-100">
+
+<main role="main" class="flex-shrink-0">
+<div class="container-fluid">
+<div class="row">
+    <div class="col-lg-8 card-body">
+    {% if request.resolver_match.url_name == "core_contact" or request.resolver_match.url_name == "core_contact"%}
+    {% load static %}
+    <img src="{% static 'mon_app/logo.png' %}" class="rounded mx-auto d-block" >
+    {% endif %}
+    {% block content %}{% endblock %}
+    </div>
+    
+    {% if request.resolver_match.url_name == "core_citoyen"%}
+    <div class="col-3 card-body">
+        <div class="card">
+            <div class="card-header"><i class="far fa-compass"></i> INTERFACE CITOYEN </div>
+            <p><a class="btn btn-danger" href="{% url 'core_index'%}" role="button"><i class="fas fa-users"></i> Connection</a></p>
+            <p><a class="btn btn-danger" href="{% url 'core_contact'%}" role="button"><i class="fas fa-address-book"></i> Inscription</a></p>
+            </div>
+        </div>
+    
+    {% endif %}
+    
+    {% if request.resolver_match.url_name == "core_accueil"%}
+    {% load static %}
+    
+    <div class="card">
+    <div class="card-body">
+    <p class="card-text-center"><h1 class="display-4"> Bienvenue chez Quarant'In Need ! <img src="{% static 'mon_app/logo.png' %}" width="80" height="80" class="d-inline-block align-top" alt=""></h1></p>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{% static 'mon_app/coronavirus.jpg' %}" width="100" height="550" class="rounded mx-auto d-block" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'mon_app/couverture.png' %}" width="100" height="550" class="rounded mx-auto d-block" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'mon_app/logo.png' %}" width="100" height="550" class="rounded mx-auto d-block" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Précédent</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Suivant</span>
+  </a>
+</div>
+
+  </div>
+</div>
+    
+    
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><img src="{% static 'mon_app/logo.png' %}" width="50" height="50" class="d-inline-block align-top" alt=""> Quarant'In Need</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'core_index'%}" <span class="sr-only"> Accueil</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'core_index'%}"</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><img src="{% static 'mon_app/citoyen.png' %}" width="30" height="30" class="d-inline-block align-top" alt=""> 
+         Citoyen
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'core_contact'%}">Inscription</a>
+          <a class="dropdown-item" href="{% url 'login'}">Connection</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><img src="{% static 'mon_app/mairie.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">Collectivité </a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+{% endif %}
+    
+    
+    <div class="col-5 card-body">
+    {% block connection %}{% endblock %}
+    {% if request.resolver_match.url_name != "core_accueil"%}<p><a class="btn btn-primary" href="{% url 'core_accueil'%}" role="button"><i class="fas fa-home"></i> Retour</a></p>{% endif %}
+    </div>
+    
+        </div>
+        </main>
+        <footer class="footer mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 card-body mx-auto">
+                    ESILV - 2020
+                </div>
+            </div>
+        </div>
+        </footer>
+        
+            <script src="https://kit.fontawesome.com/7cf2a101ac.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        {% block script %}{% endblock %}
+
+</body>
+</html>
